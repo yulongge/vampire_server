@@ -1,0 +1,27 @@
+{
+  "name": "vampire",
+  "version": "1.0.0",
+  "description": "vampire后台",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yulongge/vampire_server.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "author": "geyulong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yulongge/vampire_server/issues"
+  },
+  "homepage": "https://github.com/yulongge/vampire_server#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
