@@ -19,4 +19,4 @@ app.get('/',function(req,res,next){
 //https监听3000端口
 httpsServer.listen(443);
 //http监听3001端口
-httpServer.listen(3001);
+httpServer.listen(3000);
