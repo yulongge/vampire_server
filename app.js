@@ -1,8 +1,11 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var ejs = require('ejs');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const ejs = require('ejs');
+const walk = require('klaw-sync');
+const config = require('./config.js');
+const db = require('./utils/db');
 
 var routers = require('./routes/index');
 
@@ -12,12 +15,20 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
 app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', routers);
+const connection = db.connection();
+//app.use('/', routers);
+const routes = walk(config.router_path)
+		.map(p=>p.path)
+		.filter(path=>/\.js$/.test(path))
+        .forEach(part=>require(part)(app, config.router_prefix, connection));
+        
+console.log(routes, 'routes')
 
 app.use(function(req, res, next) {
-	next(createError(404));
+	//next(createError(404));
 })
 
 module.exports = app;
