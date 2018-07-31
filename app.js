@@ -7,7 +7,6 @@ const walk = require('klaw-sync');
 const config = require('./config.js');
 const db = require('./utils/db');
 
-var routers = require('./routes/index');
 
 var app = express();
 app.engine('html', ejs.renderFile);
@@ -18,14 +17,18 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+//连接数据库
 const connection = db.connection();
-//app.use('/', routers);
+
+//遍历路由接口
 const routes = walk(config.router_path)
 		.map(p=>p.path)
 		.filter(path=>/\.js$/.test(path))
         .forEach(part=>require(part)(app, config.router_prefix, connection));
-        
-console.log(routes, 'routes')
+
+//监听小程序less文件
+require('./parseless');
 
 app.use(function(req, res, next) {
 	//next(createError(404));
