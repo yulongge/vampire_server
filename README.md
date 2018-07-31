@@ -1,7 +1,4 @@
 # vampire_server
-
-Git: https://github.com/yulongge/vampire_server.git
-
 vampire后台
 
 mac创建一个unix可执行文件? 还能识别js
@@ -46,8 +43,7 @@ https://www.cnblogs.com/eczhou/p/7845529.html
 
 https://zhidao.baidu.com/question/757776621323168484.html
 
-
-域名备案
+ICP备案申请指南
 
 
 
