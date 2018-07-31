@@ -4,6 +4,7 @@ var http = require('http');
 var https = require('https');
 var fs = require('fs');
 
+//console.log(process.env, 'process')
 var port = normalizePort(process.env.PORT || '443');
 app.set('port', port);
 
