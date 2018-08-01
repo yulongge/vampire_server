@@ -7,7 +7,6 @@ const walk = require('klaw-sync');
 const config = require('./config.js');
 const db = require('./utils/db');
 
-
 var app = express();
 app.engine('html', ejs.renderFile);
 app.set('views', path.join(__dirname, 'views'));
