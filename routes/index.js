@@ -1,4 +1,5 @@
 const {CONFIG} = require('../sql/config.sql');
+const {close} = require('../utils/db');
 
 module.exports = (app, prefix, connection)=>{
 	app.get(`${prefix}/`, function(req, res) {
@@ -15,6 +16,7 @@ module.exports = (app, prefix, connection)=>{
 					errmsg: errmsg,
 					result: result
 				});
+				close(connection);
 				return;
 			}
 			console.log(data, 'select data')

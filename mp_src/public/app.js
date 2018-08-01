@@ -9,7 +9,7 @@ App({
 		initApp(null, {}, rst => {
 			console.log(rst, 'rst');
 			//assign(_app.globalData, rst)
-			if(rst[0].title) {
+			if(rst.length && rst[0].title) {
 				console.log(rst[0].title, 'title')
 				setTimeout(function () {
 					wx.setNavigationBarTitle({
