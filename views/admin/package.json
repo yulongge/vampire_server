@@ -1,0 +1,49 @@
+{
+  "name": "admin",
+  "version": "1.0.0",
+  "description": "admin for server",
+  "main": "webpack.common.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server",
+    "build": "cross-env NODE_ENV=production webpack"
+  },
+  "author": "geyulong",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "forever": "^0.15.3",
+    "fs-extra": "^7.0.0",
+    "http-errors": "^1.6.3",
+    "klaw-sync": "^4.0.0",
+    "less": "^3.8.0",
+    "morgan": "^1.9.0",
+    "mysql": "^2.16.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-hot-loader": "^4.3.4",
+    "watch": "^1.0.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.1.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^1.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "fs": "0.0.1-security",
+    "html-webpack-plugin": "^3.2.0",
+    "less-loader": "^4.1.0",
+    "postcss-loader": "^2.1.6",
+    "react-router-dom": "^4.3.1",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5",
+    "webpack-merge": "^4.1.4"
+  }
+}

@@ -28,6 +28,24 @@ module.exports = {
 				use: [ 'babel-loader',  ],
 				exclude: /node_modules/
 			},
+			{
+				test: /\.less?$/,
+				use: [
+					{loader: 'style-loader'},
+					{loader: 'css-loader?modules&importLoaders=2'},
+					{loader: 'postcss-loader'},
+					{loader: 'less-loader'}
+				],
+				exclude: /nodde_modules/
+			},
+			{
+				test: /\.css$/,
+				use: ExtractTextPlugin.extract({
+				  fallback: 'style-loader', 
+				  use: ['css-loader']
+				})
+			},
+
 		]
 	},
 	plugins: [
