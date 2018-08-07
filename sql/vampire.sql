@@ -30,3 +30,27 @@ create table if not exists user (
 insert into user (user_name, pic, sex, age, openId, iphone, email, role, login_time)
 	values ('GYL', '', '男', 30, '234353453454', '17701389735', 'gaiyulong@gmail.com', 1, '2018-07-27');
 
+-- 首页数据
+
+create table if not exists mp_tool (
+	id INT NOT NULL AUTO_INCREMENT,
+	name varchar(100) NOT NULL,
+	url varchar(100) NOT NULL,
+	desc varchar(200),
+	icon varchar(100),
+	primary key (id)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into mp_tool(name, url, desc, icon) values
+	('吃', 'pages/eat/eat', '决定吃什么', ''),
+	('计算器', 'pages/eat/eat', '人生如何来计算，计算的奥秘来自于❤️', ''),
+	('Wifi', 'pages/eat/eat', '有我在，连接你我，共享毕生', ''),
+	('拍照', 'pages/eat/eat', '无所不用其极的拍下去...', ''),
+	('发布', 'pages/eat/eat', '发生什么，由你来', ''),
+	('图片处理', 'pages/eat/eat', '是什么样? 由你决定', ''),
+	('彩蛋', 'pages/eat/eat', '生活总是让我们措手不及，无法预知', ''),
+	('影视', 'pages/eat/eat', '守护的初心，等待慢慢觉醒', ''),
+	('歌曲', 'pages/eat/eat', '让初心跟你到绝境', ''),
+	('六合之外', 'pages/eat/eat', '六合之外, 圣人不言', ''),
+	('四海八荒', 'pages/eat/eat', '陪你走遍四海八荒', '');

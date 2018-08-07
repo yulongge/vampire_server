@@ -16,7 +16,7 @@ module.exports = (app, prefix, connection)=>{
 					errmsg: errmsg,
 					result: result
 				});
-				close(connection);
+				//close(connection);
 				return;
 			}
 			console.log(data, 'select data')
