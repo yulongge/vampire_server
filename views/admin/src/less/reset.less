@@ -12,12 +12,14 @@ input {
 	height: 30px;
 	width: 200px;
 	background-color: transparent;
+	outline: none;
 }
 
-input:-webkit-autofill {
-    background-color: #FAFFBD;
-    background-image: none;
-    color: #000;
+
+input:-webkit-autofill { 
+	-webkit-box-shadow: 0 0 0px 1000px white inset; 
+	border: 1px solid #CCC!important; 
+
 }
 
 :global {

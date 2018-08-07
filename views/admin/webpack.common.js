@@ -45,6 +45,16 @@ module.exports = {
 				  use: ['css-loader']
 				})
 			},
+			{
+				test: /\.(png|jpe?g|gif+webp)$/,
+				use: [{
+					loader: 'url-loader',
+					options: {
+						limit: 1024 * 10,
+						name: 'images/[name].[ext]'
+					}
+				}]
+			}
 
 		]
 	},
