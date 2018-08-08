@@ -55,7 +55,7 @@ function isLess(f, stat) {
 watchTree(config.mp_css_path, {
 	filter: isLess
 }, function(f, curr, prev) {
-	//	console.log(f, curr, prev, 'event');	
+	console.log(f, curr, prev, 'event');	
 	Object.keys(f).forEach(function(name) {
 		let stat = f[name];
 		if (/\_.*?\.less$/.test(name)) {
