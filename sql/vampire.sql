@@ -35,14 +35,13 @@ insert into user (user_name, pic, sex, age, openId, iphone, email, role, login_t
 create table if not exists mp_tool (
 	id INT NOT NULL AUTO_INCREMENT,
 	name varchar(100) NOT NULL,
-	url varchar(100) NOT NULL,
-	desc varchar(200),
-	icon varchar(100),
+	t_url varchar(100) NOT NULL,
+	t_desc varchar(100),
+	t_icon varchar(100),
 	primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-insert into mp_tool(name, url, desc, icon) values
+insert into mp_tool(name, t_url, t_desc, t_icon) values
 	('吃', 'pages/eat/eat', '决定吃什么', ''),
 	('计算器', 'pages/eat/eat', '人生如何来计算，计算的奥秘来自于❤️', ''),
 	('Wifi', 'pages/eat/eat', '有我在，连接你我，共享毕生', ''),
