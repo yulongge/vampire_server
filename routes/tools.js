@@ -1,26 +1,20 @@
 const {TOOL_LIST} = require('../sql/tools.sql');
 const {close} = require('../utils/db');
+const query = require('../utils/pool');
 
 module.exports = (app, prefix, connection)=>{
 	app.get(`${prefix}/tools`, function(req, res) {
 		let errcode = 0,
 			errmsg = "success",
 			result = {};
-		connection.query(TOOL_LIST, (err, data) =>  {
+		query(TOOL_LIST, (err, vals, fields) => {
 			if(err) {
-				console.log('Select TOOL_LIST ERROR', err.message);
-				errcode = 1;
-				errmsg = err.message;
-				res.json({
-					errcode: errcode,
-					errmsg: errmsg,
-					result: result
-				});
-				//close(connection);
-				return;
+				errcode = err.code,
+				errmsg = err.message,
+				result = result
+			} else {
+				result = vals;
 			}
-			console.log(data, 'select data')
-			result = data;
 			res.json({
 				errcode: errcode,
 				errmsg: errmsg,

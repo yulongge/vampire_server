@@ -53,3 +53,18 @@ insert into mp_tool(name, t_url, t_desc, t_icon) values
 	('歌曲', 'pages/eat/eat', '让初心跟你到绝境', ''),
 	('六合之外', 'pages/eat/eat', '六合之外, 圣人不言', ''),
 	('四海八荒', 'pages/eat/eat', '陪你走遍四海八荒', '');
+
+-- 导航栏数据
+
+create table if not exists mp_nav (
+	id INT NOT NULL AUTO_INCREMENT,
+	name varchar(100) NOT NULL,
+	path varchar(100),
+	icon varchar(100),
+	primary key(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into mp_nav (name, path, icon) values
+	('首页', 'pages/index/index', ''),
+	('工具', 'pages/tools/tools', ''),
+	('我的', 'pages/mine/mine', '');

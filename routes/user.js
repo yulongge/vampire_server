@@ -1,30 +1,24 @@
 const {USER_LIST} = require('../sql/user.sql');
+const query = require('../utils/pool');
 
 module.exports = (app, prefix, connection)=>{
 	app.get(`${prefix}/user`, function(req, res) {
 		let errcode = 0,
 			errmsg = "success",
 			result = {};
-		connection.query(USER_LIST, (err, data) =>  {
+		query(USER_LIST, (err, vals, fields) => {
 			if(err) {
-				console.log('Select User Error', err.message);
-				errcode = 1;
-				errmsg = err.message;
-				res.json({
-					errcode: errcode,
-					errmsg: errmsg,
-					result: result
-				});
-				return;
+				errcode = err.code,
+				errmsg = err.message,
+				result = result
+			} else {
+				result = vals;
 			}
-			console.log(data, 'select data')
-			result = data;
 			res.json({
 				errcode: errcode,
 				errmsg: errmsg,
 				result: result
 			});
 		})
-		
 	})
 }

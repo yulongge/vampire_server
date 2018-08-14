@@ -1,26 +1,43 @@
 const {CONFIG} = require('../sql/config.sql');
-const {close} = require('../utils/db');
+const {NAV} = require('../sql/nav.sql');
+const query = require('../utils/pool');
 
-module.exports = (app, prefix, connection)=>{
+module.exports = (app, prefix)=>{
 	app.get(`${prefix}/`, function(req, res) {
 		let errcode = 0,
 			errmsg = "success",
 			result = {};
-		connection.query(CONFIG, (err, data) =>  {
+		query(CONFIG, (err, vals, fields) => {
+			console.log(err, 'query')
 			if(err) {
-				console.log('Select User Error', err.message);
-				errcode = 1;
-				errmsg = err.message;
-				res.json({
-					errcode: errcode,
-					errmsg: errmsg,
-					result: result
-				});
-				//close(connection);
-				return;
+				errcode = err.code,
+				errmsg = err.message,
+				result = result
+			} else {
+				result = vals;
 			}
-			console.log(data, 'select data')
-			result = data;
+			res.json({
+				errcode: errcode,
+				errmsg: errmsg,
+				result: result
+			});
+		})
+		
+	});
+
+	app.get(`${prefix}/nav`, function(req, res) {
+		let errcode = 0,
+			errmsg = "success",
+			result = {};
+		query(NAV, (err, vals, fields) => {
+			console.log(err, 'query')
+			if(err) {
+				errcode = err.code,
+				errmsg = err.message,
+				result = result
+			} else {
+				result = vals;
+			}
 			res.json({
 				errcode: errcode,
 				errmsg: errmsg,

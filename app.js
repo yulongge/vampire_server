@@ -18,16 +18,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'views')));
 
 //连接数据库
-const connection = db.connection();
+//const connection = db.connection();
 
 //遍历路由接口
 const routes = walk(config.router_path)
 		.map(p=>p.path)
 		.filter(path=>/\.js$/.test(path))
-        .forEach(part=>require(part)(app, config.router_prefix, connection));
+        .forEach(part=>require(part)(app, config.router_prefix));
 
 //监听小程序less文件
-require('./parseless');
+//require('./parseless');
 
 app.use(function(req, res, next) {
 	//next(createError(404));
