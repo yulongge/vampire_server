@@ -30,7 +30,31 @@ create table if not exists user (
 insert into user (user_name, pic, sex, age, openId, iphone, email, role, login_time)
 	values ('GYL', '', '男', 30, '234353453454', '17701389735', 'gaiyulong@gmail.com', 1, '2018-07-27');
 
--- 首页数据
+-- 文章数据 article
+
+create table if not exists mp_article (
+	id INT NOT NULL AUTO_INCREMENT,
+	a_title varchar(100) NOT NULL,
+	a_url varchar(100) NOT NULL,
+	a_desc varchar(100),
+	a_icon varchar(100),
+	primary key (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into mp_article(a_title, a_url, a_desc, a_icon) values
+	('人间不值得', 'pages/article_detail/article_detail', '人间不值得，何苦来一遭', 'https://geyulong.tech/images/mp/article/article1.png'),
+	('胖瘦理论', 'pages/article_detail/article_detail', '无法掌控自己胖瘦的人，怎么掌控自己的人生', 'https://geyulong.tech/images/mp/article/article2.png'),
+	('Wifi', 'pages/article_detail/article_detail', '有我在，连接你我，共享毕生', 'https://geyulong.tech/images/mp/article/article3.png'),
+	('时光机', 'pages/article_detail/article_detail', '未来可期，也可欺。。。', 'https://geyulong.tech/images/mp/article/article4.png'),
+	('神', 'pages/article_detail/article_detail', '发生什么，由你来, 可笑', 'https://geyulong.tech/images/mp/article/article5.png'),
+	('人佛', 'pages/article_detail/article_detail', '天地悠然而起，江河悠然而落', 'https://geyulong.tech/images/mp/article/article6.png'),
+	('彩蛋', 'pages/article_detail/article_detail', '生活总是让我们措手不及，无法预知', 'https://geyulong.tech/images/mp/article/article7.png'),
+	('影视', 'pages/article_detail/article_detail', '守护的初心，等待慢慢觉醒', 'https://geyulong.tech/images/mp/article/article1.png'),
+	('歌曲', 'pages/article_detail/article_detail', '让初心跟你到绝境', 'https://geyulong.tech/images/mp/article/article2.png'),
+	('六合之外', 'pages/article_detail/article_detail', '六合之外, 圣人不言，您是圣人吗', 'https://geyulong.tech/images/mp/article/article3.png'),
+	('四海八荒', 'pages/article_detail/article_detail', '陪你走遍四海八荒，也不是不可能，没意思啊，丫的', 'https://geyulong.tech/images/mp/article/article4.png');
+
+-- 工具
 
 create table if not exists mp_tool (
 	id INT NOT NULL AUTO_INCREMENT,
