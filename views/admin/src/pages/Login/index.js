@@ -29,7 +29,7 @@ export default class Login extends Component {
 			//4:fillText(str,x,y);原理就是去更改y的坐标位置
 			//绘画的函数
 			function draw(){
-				context.fillStyle = "rgba(0,0,0,0.05)";
+				context.fillStyle = "rgba(255,255,255,.05)";
 				context.fillRect(0,0,W,H);
 				//给字体设置样式
 				context.font = "700 "+fontSize+"px  微软雅黑";
