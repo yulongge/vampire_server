@@ -18,7 +18,7 @@ module.exports = {
 	},
 	resolve: {
 		alias: {
-		
+			components: resolve(__dirname, 'src/components/')
 		}
 	},
 	module: {
@@ -34,7 +34,7 @@ module.exports = {
 					{loader: 'style-loader'},
 					{loader: 'css-loader?modules&importLoaders=2'},
 					{loader: 'postcss-loader'},
-					{loader: 'less-loader'}
+					{loader: 'less-loader', options: {javascriptEnabled: true}}
 				],
 				exclude: /nodde_modules/
 			},
