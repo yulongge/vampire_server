@@ -18,11 +18,11 @@ export default class extends Component {
 
 	render() {
 		const collapse = this.state.collapse;
-		return <div className={`${styles.slider_component } ${collapse ? styles.aside_collapse : ''}`}>
+		console.log(collapse, 'collapse')
+		return <div className={`${styles.slider_component } ${collapse ? styles.aside_collapse : styles.aside_open}`}>
 			<div className="aside-action" onClick={this.onCollapseChange.bind(this)}>
 				{collapse ? <Icon type="right" /> : <Icon type="left" />}
 			</div>
-			
 		</div>
 	}
 }

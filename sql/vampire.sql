@@ -1,4 +1,7 @@
 create database vampire;
+
+-- 小程序表
+
 use vampire;
 
 -- 全局配置表
@@ -92,3 +95,20 @@ insert into mp_nav (name, path, icon) values
 	('首页', 'pages/index/index', ''),
 	('工具', 'pages/tools/tools', ''),
 	('我的', 'pages/mine/mine', '');
+
+
+-- 后台管理表
+
+create table if not exists server_nav (
+	id INT NOT NULL AUTO_INCREMENT,
+	name varchar(100) NOT NULL,
+	path varchar(100),
+	icon varchar(100),
+	nav_id INT(10),
+	parent_id INT(10),
+	primary key(id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+insert into server_nav (name, path, icon, nav_id, parent_id) values
+	('用户信息', '/admin/user', '/admin/upload/images/user.svg', '1', ''),
+	('文章', '/admin/article', '/admin/upload/images/blog.svg', '2', '');

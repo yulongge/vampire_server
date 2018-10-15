@@ -6,7 +6,10 @@
 
 ## server
 
+## admin
 
+启动: `npm run dev_admin`
+打包: `npm run build_admin`
 
 ## mysql
 
