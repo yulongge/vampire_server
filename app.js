@@ -20,12 +20,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'views')));
 
 
-app.all('*', function(req, res, next) {  
-    res.header("Access-Control-Allow-Origin", `http://localhost:8080`);
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");  
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");  
-	res.header("Content-Type", "application/json;charset=utf-8");  
+app.all('/vampire_server/*', function(req, res, next) {  
+	if(req.headers.origin == "http://localhost:8080" || req.headers.origin == "https://geyulong.tech") {
+		res.header("Access-Control-Allow-Origin", `http://localhost:8080`);
+		res.header("Access-Control-Allow-Credentials", true);
+		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");  
+		res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");  
+		res.header("Content-Type", "application/json;charset=utf-8");
+	}
+      
 	if (req.method == 'OPTIONS') {
 		res.send(200);
 	} else {
