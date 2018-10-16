@@ -14,6 +14,7 @@ const render = (Component) => {
 };
 render(App);
 if(module.hot) {
+	console.log('hoting...')
 	module.hot.accept('./pages/App', () => {
 		render(App);
 	})
