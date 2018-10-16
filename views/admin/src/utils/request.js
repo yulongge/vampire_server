@@ -50,7 +50,9 @@ function FETCH(url, options) {
 	url = `${domain}${url}`;
 	const headers = {
 		'Accept': 'application/json',
-		"Content-Type": "application/json"
+		"Content-Type": "application/json",
+		"Host": "geyulong.tech",
+		"Referer": "https://geyulong.tech/admin/"
 	};
 
 	return (
