@@ -6,6 +6,8 @@
 
 ## server
 
+forever start 
+
 ## admin
 
 启动: `npm run dev_admin`

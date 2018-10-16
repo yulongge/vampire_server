@@ -12,7 +12,15 @@ app.engine('html', ejs.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
-app.all('*', function(req, res, next) {  
+
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, 'views')));
+
+
+app.all('/vampire_server/*', function(req, res, next) {  
     res.header("Access-Control-Allow-Origin", `*`);
     res.header("Access-Control-Allow-Credentials", true);
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");  
@@ -20,12 +28,6 @@ app.all('*', function(req, res, next) {
     res.header("Content-Type", "application/json;charset=utf-8");  
     next();  
 });
-
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'views')));
-
 //连接数据库
 //const connection = db.connection();
 
