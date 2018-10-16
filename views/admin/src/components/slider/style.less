@@ -12,6 +12,37 @@
 			line-height: 3rem;
 			font-size: 3rem;
 			cursor: pointer;
+			.arrow {
+				
+			}
+		}
+
+		.nav {
+			.item {
+				display: flex;
+				align-items: center;
+				height: 2rem;
+				line-height: unset;
+				margin-bottom: 2rem;
+				.icon {
+					width: 5rem;
+					font-size: 1.2rem;
+					img {
+						width: 1.6rem;
+						height: 1.6rem;
+						vertical-align: middle;
+					}
+				}
+				.name {
+					flex: 1;
+					font-size: 1.2rem;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
+					text-align: left;
+					padding: 0px 2px;
+				}
+			}
 		}
 	}
 }
@@ -31,6 +62,14 @@
 			line-height: 3rem;
 			font-size: 3rem;
 			cursor: pointer;
+		}
+		.nav {
+			.item {
+				.name {
+					flex: 1;
+					display: none;
+				}
+			}
 		}
 	}
 }

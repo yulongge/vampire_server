@@ -110,5 +110,8 @@ create table if not exists server_nav (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 insert into server_nav (name, path, icon, nav_id, parent_id) values
-	('用户信息', '/admin/user', '/admin/upload/images/user.svg', '1', ''),
+	('用户', '/admin/user', '/admin/upload/images/user.svg', '1', ''),
 	('文章', '/admin/article', '/admin/upload/images/blog.svg', '2', '');
+
+update server_nav set name="文章列表", icon="https://geyulong.tech/admin/upload/images/blog.svg" where id=2;
+update server_nav set  icon="https://geyulong.tech/admin/upload/images/user.svg" where id=1;
