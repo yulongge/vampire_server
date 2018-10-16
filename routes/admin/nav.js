@@ -1,5 +1,5 @@
-const {ADMIN_NAV} = require('../sql/admin/nav.sql');
-const query = require('../utils/pool');
+const {ADMIN_NAV} = require('../../sql/admin/nav.sql');
+const query = require('../../utils/pool');
 
 module.exports = (app, prefix, connection)=>{
 	app.get(`${prefix}/admin/nav`, function(req, res) {
