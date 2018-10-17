@@ -14,11 +14,12 @@ class Store{
 
 	//获取导航数据
 	@action getAdminNavData() {
-		getAdminNav().then(rst => {
+		return getAdminNav().then(rst => {
 			runInAction(() => {
-				console.log(rst, 'nav data')
+				//console.log(rst, 'nav data')
 				this.navData = rst.result;
 			})
+			return rst.result;
 		})
 	}
 

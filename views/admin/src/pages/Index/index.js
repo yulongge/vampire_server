@@ -11,24 +11,48 @@ import Article from '../Article';
 export default class Index extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			currentNav: {}
+		}
 	}
 
 	componentWillMount() {
-		//console.log(getAdminNav, 'getAdminUser')
-		this.props.AppStateStore.getAdminNavData();
+		this.props.AppStateStore.getAdminNavData().then(rst => {
+			const {match} = this.props,
+				matchNav =  rst.filter(item => item.path == match.url);
+			let currentNav = rst[0];
+			if(matchNav.length) {
+				currentNav = matchNav[0];
+			}
+			this.setState({
+				currentNav: currentNav
+			})
+		});
+	}
+
+	toPage(item, url) {
+		this.setState({
+			currentNav: item
+		})
+		this.props.history.push(url);
 	}
 
 	render() {
-		console.log(this.props.AppStateStore.navData, 'render')
-		const {navData} = this.props.AppStateStore;
+		//console.log(this.props, 'render')
+		const {navData} = this.props.AppStateStore,
+			{currentNav} = this.state;
 		return <div className={styles.page_index}>
-			<Slider data={navData}/>
+			<Slider data={navData} toPage={this.toPage.bind(this)}/>
 			<div className="main">
-				<Switch>
-					<Route exact path="/admin" component={User}/>
-					<Route exact path="/admin/user" component={User}/>
-					<Route exact path="/admin/article" component={Article}/>
-				</Switch>
+				<div className="directory">{currentNav.name}</div>
+				<div className="workcenter">
+					<Switch>
+						<Route exact path="/admin" component={User}/>
+						<Route exact path="/admin/user" component={User}/>
+						<Route exact path="/admin/article" component={Article}/>
+					</Switch>
+				</div>
+				
 			</div>
 		</div>
 	}

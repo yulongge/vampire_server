@@ -3,8 +3,30 @@
 	:global {
 		.main {
 			flex: 1;
-			padding: 1rem;
+			//padding: 1rem;
 			box-sizing: border-box;
+			height: 100vh;
+			overflow: auto;
+			position: relative;
+			padding-top: 4rem;
+			.directory {
+				position: fixed;
+				width: 100%;
+				top: 0px;
+				height: 3rem;
+				line-height: 3rem;
+				font-size: 1.2rem;
+				background-color: #222;
+				z-index: 222;
+				color: #fff;
+				padding: 0px 1rem;
+			}
+			.workcenter {
+				padding: 1rem;
+				.ant-table {
+					font-size: 1rem;
+				}
+			}
 		}
 	}
 }

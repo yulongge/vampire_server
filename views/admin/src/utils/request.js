@@ -72,23 +72,16 @@ function FETCH(url, options) {
 }
 
 function GET(url, data = {}, options = {}) {
-
-	console.log(url, data, 'GET')
-	//this.send = () => {
-
-		let _url = encodeQuery(url, data);
-		console.log(_url, '_url')
-		return FETCH(_url, {
+	let _url = encodeQuery(url, data);
+	return FETCH(_url, {
 			method: "GET",
 			...options
 		}).then(res => {
-			console.log(res, 'res')
 			return res;
 		}).catch(err => {
 			console.log(err, 'error')
 			throw err;
 		})
-	//}
 }
 
 function POST(url, data = {}, options = {}) {

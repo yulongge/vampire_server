@@ -17,28 +17,26 @@ export default class extends Component {
 	}
 
 	render() {
-		const collapse = this.state.collapse;
-		const {data} = this.props;
-		console.log(this.props.data.length, 'collapse')
-		return <div className={`${styles.slider_component } ${collapse ? styles.aside_collapse : styles.aside_open}`}>
-			<div className="aside-action" onClick={this.onCollapseChange.bind(this)}>
-				<div className="arrow">
-					<span className="icon"></span>
+		const collapse = this.state.collapse,
+			{data} = this.props;
+
+		return 	<div className={`${styles.slider_component } ${collapse ? styles.aside_collapse : styles.aside_open}`}>
+					<div className="aside-action" onClick={this.onCollapseChange.bind(this)}>
+						<span className="icon"></span>
+					</div>
+					<div className="nav">
+						{
+							data.map((item, index) => {
+								return <div className="item" key={index} onClick={this.props.toPage.bind(this, item, item.path)}>
+									<span className="icon">
+										<img src={item.icon} />
+									</span>
+									<span className="name">{item.name}</span>
+									
+								</div>
+							})
+						}
+					</div>
 				</div>
-			</div>
-			<div className="nav">
-				{
-					data.map((item, index) => {
-						return <div className="item" key={index}>
-							<span className="icon">
-								<img src={item.icon} />
-							</span>
-							<span className="name">{item.name}</span>
-							
-						</div>
-					})
-				}
-			</div>
-		</div>
 	}
 }
