@@ -12,15 +12,35 @@ app.engine('html', ejs.renderFile);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 
+
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'views')));
 
+
+app.all('/vampire_server/*', function(req, res, next) {  
+	if(req.headers.origin == "http://localhost:8080" || req.headers.origin == "https://geyulong.tech") {
+		res.header("Access-Control-Allow-Origin", req.headers.origin);
+		res.header("Access-Control-Allow-Credentials", true);
+		res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");  
+		res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");  
+		res.header("Content-Type", "application/json;charset=utf-8");
+	}
+      
+	if (req.method == 'OPTIONS') {
+		res.send(200);
+	} else {
+		next();
+	}
+    
+});
 //连接数据库
 //const connection = db.connection();
 
 //遍历路由接口
+
 const routes = walk(config.router_path)
 		.map(p=>p.path)
 		.filter(path=>/\.js$/.test(path))

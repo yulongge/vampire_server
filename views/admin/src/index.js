@@ -3,6 +3,7 @@ import ReactDom from 'react-dom';
 import {AppContainer} from 'react-hot-loader';
 import App from './pages/App';
 import './less/reset.less';
+// import 'antd/dist/antd.less';
 
 const render = (Component) => {
 	ReactDom.render(
@@ -14,6 +15,7 @@ const render = (Component) => {
 };
 render(App);
 if(module.hot) {
+	console.log('hoting...')
 	module.hot.accept('./pages/App', () => {
 		render(App);
 	})

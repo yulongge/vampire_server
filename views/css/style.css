@@ -4,6 +4,18 @@
 	left: 0px;
 	right: 0px;
 	bottom: 0px;
+	background-image: url(../images/loginBg.png);
+	background-size: cover;
+}
+.shade {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	background-color: #000;
+	opacity: .8;
+	filter: blur(10px);
 }
 .con {
 	position: relative;
@@ -26,6 +38,7 @@ a {
 	text-decoration: none;
 	color: #39ba1f;
 	font-weight: bold;
+	
 }
 
 span {

@@ -1,0 +1,35 @@
+.option_component {
+    position: fixed;
+    right: 2rem;
+    bottom: 2rem;
+    :global {
+        .option {
+            .switch {
+                display: inline-block;
+                width: 5rem;
+                height: 5rem;
+                background-image: url(../../images/option.svg);
+                background-size: contain;
+                cursor: pointer;
+            }
+
+            .add_article {
+                position: absolute;
+                top: -5rem;
+                left: -5rem;
+                display: none;
+                width: 3rem;
+                height: 3rem;
+                background-image: url(../../images/add_article.svg);
+                background-size: contain;
+                cursor: pointer;
+            }
+        }
+
+        .active {
+            .add_article {
+                display: inline-block;
+            }
+        }
+    }
+}

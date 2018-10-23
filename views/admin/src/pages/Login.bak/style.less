@@ -1,0 +1,67 @@
+.page {
+	background: #fff;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+}
+
+.login {
+	width: 30rem;
+	height: 40rem;
+	background: #666;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 2;
+	box-shadow: 0px 0px 50px 0px rgba(11,11,11,0.5);
+	border-radius: 10px;
+	padding: 20px;
+	:global {
+		 
+		.logo {
+			width: 100px;
+			height: 100px;
+			border: 1px solid #333;
+			border-radius: 50%;
+			margin: auto;
+			margin-top: 50px;
+			background: #fff;
+			background-image: url(../../images/logo.jpeg);
+			background-size: contain;
+		}
+
+		.con {
+			padding: 20px;
+			margin-top: 20px;
+			.item {
+				display: block;
+				width: 200px;
+				margin: auto;
+				margin-top: 20px;
+				.val {
+					border-radius: 30px;
+					margin: auto;
+					width: 100%;
+					border: 1px solid #efefef;
+					padding: 0px 20px;
+					background: #fff;
+					box-sizing: border-box;
+				}
+			}
+
+			.login_btn {
+				display: block;
+				width: 200px;
+				height: 40px;
+				background: #fff;
+				border-radius: 30px;
+				margin: auto;
+				margin-top: 60px;
+				text-align: center;
+				line-height: 40px;
+				font-weight: bold;
+			}
+		}
+	}
+}
