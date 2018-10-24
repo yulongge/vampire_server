@@ -50,10 +50,11 @@ export default class Index extends Component {
 					<Switch>
 						<Route exact path="/admin" component={User}/>
 						<Route exact path="/admin/user" component={User}/>
-						<Route exact path="/admin/article" component={Article}/>
+						<Route path="/admin/article" component={Article}/>
+						<Route path="/admin/create_article" component={Article}/>
 					</Switch>
 				</div>
-				<Option />
+				<Option history={this.props.history}/>
 			</div>
 		</div>
 	}

@@ -15,7 +15,7 @@ export default class Option extends Component {
             <div className={`option ${isSwitch ? 'active' : ''}`} >
                 <span className="switch" onClick={this.switchOption.bind(this)}></span>
 
-                <span className="add_article"></span>
+                <span className="add_article" onClick={this.toCreateArticle.bind(this)}></span>
             </div>
         </div>
     }
@@ -25,6 +25,10 @@ export default class Option extends Component {
         this.setState({
             isSwitch: !this.state.isSwitch
         })
+    }
+
+    toCreateArticle() {
+        this.props.history.push("/admin/create_article")
     }
 
 }

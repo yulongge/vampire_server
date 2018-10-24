@@ -1,22 +1,14 @@
 import React, {Component} from 'react';
-import { observer, inject } from 'mobx-react';
-import { Table } from 'antd';
+import {Route, Switch} from 'react-router-dom';
+import ArticleList from './ArticleList';
+import CreateArticle from './CreateArticle';
 
-@inject("ArticleStore")
-@observer
-export default class Article extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	componentWillMount() {
-		this.props.ArticleStore.getArticleData();
-	}
-
-	render() {
-		const { columns, articleData } = this.props.ArticleStore;
-		return 	<div>
-					<Table dataSource={articleData} columns={columns} />
-				</div>
-	}
+const Article = ({match}) => {
+	console.log(match.url, 'match')
+	return 	<Switch>
+				<Route exact path={`/admin/article`} component={ArticleList} />
+				<Route exact path={`/admin/create_article`} component={CreateArticle} />
+			</Switch>
 }
+
+export default Article;
