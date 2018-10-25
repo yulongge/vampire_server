@@ -29,8 +29,8 @@ class Store {
 		},
 		{
 			title: '路径',
-			dataIndex: 'a_url',
-			key: 'a_url'
+			dataIndex: 'a_path',
+			key: 'a_path'
 		}
 		
 	]

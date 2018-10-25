@@ -59,6 +59,7 @@ insert into mp_article(a_title, a_url, a_desc, a_icon) values
 	('四海八荒', 'pages/article_detail/article_detail', '陪你走遍四海八荒，也不是不可能，没意思啊，丫的', 'https://geyulong.tech/images/mp/article/article4.png');
 
 alter table mp_article add a_path varchar(100) not NULL;
+alter table mp_article add a_create_time varchar(100) not NULL;
 
 -- 工具
 

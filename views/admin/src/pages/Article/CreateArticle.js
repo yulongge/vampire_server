@@ -92,9 +92,9 @@ class CreateArticle extends Component {
 		console.log(this.props.ArticleStore, 'handleSubmit')
 		this.props.form.validateFields((err, values) => {
 			let data = {...values};
-			data.a_path = encodeURIComponent(data.a_path);
-			data.a_icon = encodeURIComponent(data.a_icon);
-			data.a_url = encodeURIComponent(data.a_url);
+			// data.a_path = encodeURIComponent(data.a_path);
+			// data.a_icon = encodeURIComponent(data.a_icon);
+			// data.a_url = encodeURIComponent(data.a_url);
 			if (!err) {
 				console.log('Received values of form: ', data);
 				_this.props.ArticleStore.addArticle(data);
