@@ -61,6 +61,8 @@ insert into mp_article(a_title, a_url, a_desc, a_icon) values
 alter table mp_article add a_path varchar(100) not NULL;
 alter table mp_article add a_create_time varchar(100) not NULL;
 
+truncate table mp_article
+
 -- 工具
 
 create table if not exists mp_tool (
