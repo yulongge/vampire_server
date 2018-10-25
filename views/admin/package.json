@@ -23,6 +23,7 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-hot-loader": "^4.3.4",
+    "wangeditor": "^3.1.1",
     "watch": "^1.0.2"
   },
   "devDependencies": {
