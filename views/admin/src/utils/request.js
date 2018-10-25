@@ -86,20 +86,21 @@ function GET(url, data = {}, options = {}) {
 
 function POST(url, data = {}, options = {}) {
 	data = typeof data === 'object' ? JSON.stringify(data) : data;
-
-	this.send = () => {
-		return FETCH(url, {
+	console.log(url, data, 'request data')
+	return FETCH(url, {
 			method: "POST",
-			body: params,//typeof data === 'object' ? JSON.stringify(data) : data,
+			body: typeof data === 'object' ? JSON.stringify(data) : data,
 			...options
 		})
-			.then(resp => {
-				return resp;
-			})
-			.catch(error => {
-				throw error;
-			})
-	}
+		.then(resp => {
+			console.log(resp, 'Resp')
+			return resp;
+		})
+		.catch(error => {
+			console.log(error, 'Resp error')
+			throw error;
+		})
+	
 }
 
 

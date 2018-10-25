@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import styles from './style.less';
 import { Form, Input, Button } from 'antd';
+import { observer, inject } from 'mobx-react';
+
 
 const FormItem = Form.Item;
 const formItemLayout = {
@@ -26,39 +28,84 @@ const tailFormItemLayout = {
     },
 };
 
-export default class CreateArticle extends Component {
+@inject("ArticleStore")
+@observer
+class CreateArticle extends Component {
     render() {
+		
         return  <div className={styles.page_create_article}>
-                    <Form>
+                    <Form onSubmit={this.handleSubmit.bind(this)}>
                         <FormItem
                             {...formItemLayout}
-                            label="标题"
+                            label="Title"
                         >
-                            <Input placeholder="请输入文章标题" name="title" />
+						{this.getField("a_title", "Please input your Title!", true)}
                         </FormItem>
                         <FormItem
                             {...formItemLayout}
-                            label="描述"
+                            label="Desc"
                         >
-                            <Input placeholder="请输入描述" name="title" />
+						{this.getField("a_desc", "Please input your Desc!", true)}
                         </FormItem>
                         <FormItem
                             {...formItemLayout}
-                            label="文章地址"
+                            label="Url"
                         >
-                            <Input placeholder="请输入文章地址" name="title" />
+						{this.getField("a_url", "Please input your Url!", true)}
                         </FormItem>
                         <FormItem
                             {...formItemLayout}
-                            label="路径"
+                            label="Path"
                         >
-                            <Input defaultValue="pages/article_detail/article_detail" name="title" />
+						{this.getField("a_path", "Please input your Path!", true, "/pages/article_detail/article_detail")}
+						</FormItem>
+						
+						<FormItem
+                            {...formItemLayout}
+                            label="Icon"
+                        >
+						{this.getField("a_icon", "Please input your Icon!", true, "https://geyulong.tech/images/mp/article/article4.png")}
                         </FormItem>
 
                         <FormItem {...tailFormItemLayout}>
-                             <Button type="primary" htmlType="submit">保存</Button>
+                             <Button type="primary" htmlType="submit">Save</Button>
                         </FormItem>
                     </Form>
                 </div>
-    }
+	}
+
+	getField(title, tip, isRequired, defaultValue) {
+		const { getFieldDecorator } = this.props.form;
+		return getFieldDecorator(title, {
+					rules: [{
+						required: isRequired, message: tip,	
+					}],
+					initialValue: defaultValue
+				})(
+					<Input placeholder={tip}/>
+				)
+	}
+	
+	handleSubmit(e) {
+		e.preventDefault();
+		const _this = this;
+		console.log(this.props.ArticleStore, 'handleSubmit')
+		this.props.form.validateFields((err, values) => {
+			let data = {...values};
+			// data.a_path = encodeURIComponent(data.a_path);
+			// data.a_icon = encodeURIComponent(data.a_icon);
+			// data.a_url = encodeURIComponent(data.a_url);
+			if (!err) {
+				console.log('Received values of form: ', data);
+				_this.props.ArticleStore.addArticle(data);
+			} else {
+				throw err;
+			}
+		})
+
+		
+	}
 }
+
+
+export default Form.create()(CreateArticle);

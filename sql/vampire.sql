@@ -39,6 +39,7 @@ create table if not exists mp_article (
 	id INT NOT NULL AUTO_INCREMENT,
 	a_title varchar(100) NOT NULL,
 	a_url varchar(100) NOT NULL,
+	a_path varchar(100) NOT NULL,
 	a_desc varchar(100),
 	a_icon varchar(100),
 	primary key (id)
@@ -56,6 +57,11 @@ insert into mp_article(a_title, a_url, a_desc, a_icon) values
 	('歌曲', 'pages/article_detail/article_detail', '让初心跟你到绝境', 'https://geyulong.tech/images/mp/article/article2.png'),
 	('六合之外', 'pages/article_detail/article_detail', '六合之外, 圣人不言，您是圣人吗', 'https://geyulong.tech/images/mp/article/article3.png'),
 	('四海八荒', 'pages/article_detail/article_detail', '陪你走遍四海八荒，也不是不可能，没意思啊，丫的', 'https://geyulong.tech/images/mp/article/article4.png');
+
+alter table mp_article add a_path varchar(100) not NULL;
+alter table mp_article add a_create_time varchar(100) not NULL;
+
+truncate table mp_article
 
 -- 工具
 

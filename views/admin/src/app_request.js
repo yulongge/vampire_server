@@ -9,3 +9,5 @@ export const getAdminUser = ()=>requestUtil.GET(`/user`);
 //获取文章信息
 export const getArticle = ()=>requestUtil.GET(`/article`);
 
+//创建新文章
+export const addArticle = (data)=>requestUtil.POST(`/article/create`, {...data});

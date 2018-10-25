@@ -1,5 +1,5 @@
 import { observable, action, runInAction, configure } from 'mobx';
-import { getArticle } from '../app_request';
+import { getArticle, addArticle } from '../app_request';
 
 class Store {
 	constructor() {
@@ -29,13 +29,13 @@ class Store {
 		},
 		{
 			title: '路径',
-			dataIndex: 'a_url',
-			key: 'a_url'
+			dataIndex: 'a_path',
+			key: 'a_path'
 		}
 		
 	]
 
-	//获取用户信息
+	//获取文章列表
 	@action getArticleData() {
 		getArticle().then(rst => {
 			runInAction(() => {
@@ -46,6 +46,11 @@ class Store {
 				this.articleData = dataSource;
 			})
 		})
+	}
+
+	@action addArticle(data) {
+		console.log(data, 'store')
+		return addArticle(data)
 	}
 }
 

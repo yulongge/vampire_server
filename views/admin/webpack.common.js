@@ -120,7 +120,7 @@ module.exports = {
 	},
 	plugins: [
 		new HTMLWebpackPlugin({
-			title: '我的王国',
+			title: 'Vampire',
 			template: './index.html',
 			inject: true
 		}),
