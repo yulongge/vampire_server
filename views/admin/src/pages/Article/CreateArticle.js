@@ -57,7 +57,7 @@ class CreateArticle extends Component {
                             {...formItemLayout}
                             label="Path"
                         >
-						{this.getField("a_path", "Please input your Path!", true, "pages/article_detail/article_detail")}
+						{this.getField("a_path", "Please input your Path!", true, "/pages/article_detail/article_detail")}
 						</FormItem>
 						
 						<FormItem
@@ -91,9 +91,13 @@ class CreateArticle extends Component {
 		const _this = this;
 		console.log(this.props.ArticleStore, 'handleSubmit')
 		this.props.form.validateFields((err, values) => {
+			let data = {...values};
+			data.a_path = encodeURIComponent(data.a_path);
+			data.a_icon = encodeURIComponent(data.a_icon);
+			data.a_url = encodeURIComponent(data.a_url);
 			if (!err) {
-				console.log('Received values of form: ', values);
-				_this.props.ArticleStore.addArticle(values);
+				console.log('Received values of form: ', data);
+				_this.props.ArticleStore.addArticle(data);
 			} else {
 				throw err;
 			}
