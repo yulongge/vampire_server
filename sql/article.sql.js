@@ -6,7 +6,19 @@ const ADDARTICLE = (a_title, a_desc, a_url,a_path, a_icon) => {
 	return addSql;
 };
 
+const ARTICLE_DETAIL = (id) => {
+	let searchSql = `select * from mp_article where id = ${id}`;
+	return searchSql;
+};
+
+const DELETE_ARTICLE = (id) => {
+	let searchSql = `delete from mp_article where id = ${id}`;
+	return searchSql;
+};
+
 module.exports = {
 	ARTICLE_LIST,
-	ADDARTICLE
+	ADDARTICLE,
+	ARTICLE_DETAIL,
+	DELETE_ARTICLE
 }

@@ -14,9 +14,23 @@ export default class ArticleList extends Component {
     }
     
     render() {
-        const { columns, articleData } = this.props.ArticleStore;
+		const { columns, articleData } = this.props.ArticleStore,
+			columnsData = columns(this);
         return  <div>
-                    <Table dataSource={articleData} columns={columns} />
+                    <Table dataSource={articleData} columns={columnsData} />
                 </div>
-    }
+	}
+	
+	editArticle(id) {
+		console.log(id, 'editArticle');
+		this.props.history.push(`/admin/create_article?id=${id}`, {
+			id: id 
+		})
+	}
+
+	deleteArticle(id) {
+		this.props.ArticleStore.deleteArticleData({id: id}).then(() => {
+			this.props.history.push(`/admin/article`);
+		})
+	}
 }

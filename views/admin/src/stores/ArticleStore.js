@@ -1,12 +1,15 @@
 import { observable, action, runInAction, configure } from 'mobx';
-import { getArticle, addArticle } from '../app_request';
+import { getArticle, addArticle, getArticleDetail, deleteArticle } from '../app_request';
+import React from 'react';
+import {Divider} from 'antd';
 
 class Store {
 	constructor() {
 
 	}
 	@observable articleData = [];
-	@observable columns = [
+	@observable articleDetail = {};
+	@observable columns = (context) =>  ([
 		{
 			title: '标题',
 			dataIndex: 'a_title',
@@ -31,9 +34,21 @@ class Store {
 			title: '路径',
 			dataIndex: 'a_path',
 			key: 'a_path'
+		},
+		{
+			title: 'Action',
+			key: 'action',
+			width: 180,
+			render: (text, record) => (
+				<span>
+					<a href="javascript:;" onClick={context.editArticle.bind(context, record.id)}>Edit</a>
+					<Divider type="vertical" />
+					<a href="javascript:;" onClick={context.deleteArticle.bind(context, record.id)}>Delete</a>
+				</span>
+			)
 		}
 		
-	]
+	])
 
 	//获取文章列表
 	@action getArticleData() {
@@ -51,6 +66,19 @@ class Store {
 	@action addArticle(data) {
 		console.log(data, 'store')
 		return addArticle(data)
+	}
+
+	@action getArticleDetailData(data) {
+		getArticleDetail(data).then(rst => {
+			runInAction(() => {
+				this.articleDetail = rst;
+			})
+		})
+	}
+
+	@action deleteArticleData(data) {
+		console.log(data, 'store')
+		return deleteArticle(data)
 	}
 }
 
