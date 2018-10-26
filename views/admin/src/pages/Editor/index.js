@@ -13,7 +13,6 @@ export default class Editor extends Component {
     componentDidMount() {
         const { toolbar, content } = this.refs;
         const editor = new VampireEditor(toolbar, content)
-        // 使用 onchange 函数监听内容的变化，并实时更新到 state 中
         editor.customConfig.uploadImgShowBase64 = true;
         editor.customConfig.onchange = html => {
             this.setState({
