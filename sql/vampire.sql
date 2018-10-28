@@ -120,8 +120,9 @@ insert into server_nav (name, path, icon, nav_id, parent_id) values
 	('文章', '/admin/article', '/admin/upload/images/blog.svg', '2', '');
 
 insert into server_nav (name, path, icon, nav_id, parent_id) values
-	('导航列表', '/admin/nav', '/admin/upload/images/nav.svg', '3', ''),
-	('工具列表', '/admin/tool', '/admin/upload/images/tool.svg', '4', '');
+	('导航列表', '/admin/nav', 'https://geyulong.tech/admin/upload/images/nav.svg', '3', ''),
+	('工具列表', '/admin/tool', 'https://geyulong.tech/admin/upload/images/tool.svg', '4', '');
 
 update server_nav set name="文章列表", icon="https://geyulong.tech/admin/upload/images/blog.svg" where id=2;
-update server_nav set  icon="https://geyulong.tech/admin/upload/images/user.svg" where id=1;
+update server_nav set  icon="https://geyulong.tech/admin/upload/images/nav.svg" where id=3;
+update server_nav set  icon="https://geyulong.tech/admin/upload/images/tool.svg" where id=4;
