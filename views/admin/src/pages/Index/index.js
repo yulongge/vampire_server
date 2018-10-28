@@ -6,6 +6,10 @@ import styles from "./style.less";
 import User from '../User';
 import Article from '../Article';
 import Option from 'components/option';
+import Nav from '../Nav';
+import NavDetail from '../Nav/NavDetail';
+import Tool from '../Tool';
+import ToolDetail from '../Tool/ToolDetail';
 
 @inject('AppStateStore')
 @observer
@@ -52,6 +56,10 @@ export default class Index extends Component {
 						<Route exact path="/admin/user" component={User}/>
 						<Route path="/admin/article" component={Article}/>
 						<Route path="/admin/create_article" component={Article}/>
+						<Route path="/admin/nav" component={Nav}/>
+						<Route path="/admin/nav_detail" component={NavDetail}/>
+						<Route path="/admin/tool" component={Tool}/>
+						<Route path="/admin/tool_detail" component={ToolDetail}/>
 					</Switch>
 				</div>
 				<Option history={this.props.history}/>

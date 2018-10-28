@@ -15,7 +15,10 @@ export default class Option extends Component {
             <div className={`option ${isSwitch ? 'active' : ''}`} >
                 <span className="switch" onClick={this.switchOption.bind(this)}></span>
 
-                <span className="add_article" onClick={this.toCreateArticle.bind(this)}></span>
+                <span className="new_option add_article" onClick={this.toTargetPage.bind(this, "article")}></span>
+                <span className="new_option add_tool" onClick={this.toTargetPage.bind(this, 'tool')}></span>
+                <span className="new_option add_nav" onClick={this.toTargetPage.bind(this, 'nav')}></span>
+
             </div>
         </div>
     }
@@ -27,8 +30,22 @@ export default class Option extends Component {
         })
     }
 
-    toCreateArticle() {
-        this.props.history.push("/admin/create_article")
+    toTargetPage(type) {
+        let url = "";
+        switch(type) {
+            case "article" :
+                url = "/admin/create_article";
+                break;
+            case "tool" :
+                url = "/admin/tool_detail";
+                break;
+            case "nav" :
+                url = "/admin/nav_detail";
+                break;
+            default: 
+                url = "/admin/create_article"
+        }
+        this.props.history.push(url)
     }
 
 }

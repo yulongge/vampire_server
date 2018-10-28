@@ -71,7 +71,7 @@ class Store {
 	@action getArticleDetailData(data) {
 		getArticleDetail(data).then(rst => {
 			runInAction(() => {
-				this.articleDetail = rst;
+				this.articleDetail = rst.result[0];
 			})
 		})
 	}

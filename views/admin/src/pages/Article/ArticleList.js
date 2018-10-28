@@ -30,7 +30,9 @@ export default class ArticleList extends Component {
 
 	deleteArticle(id) {
 		this.props.ArticleStore.deleteArticleData({id: id}).then(() => {
-			this.props.history.push(`/admin/article`);
+			console.log(id, 'delete sucess')
+			//this.props.history.push(`/admin/article`);
+			this.props.ArticleStore.getArticleData();
 		})
 	}
 }

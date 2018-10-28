@@ -29,9 +29,9 @@ const tailFormItemLayout = {
     },
 };
 
-@inject("ArticleStore")
+@inject("ToolStore")
 @observer
-class CreateArticle extends Component {
+class CreateTool extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -42,46 +42,41 @@ class CreateArticle extends Component {
 		if(search.length) {
 			let searchStr = search.substring(1, search.length);
 			let param = searchStr.split("=");
-			this.props.ArticleStore.getArticleDetailData({id:param[1]});
+			this.props.ToolStore.getToolDetailData({id:param[1]});
 		}
 	}
 
     render() {
-        const {articleDetail} = this.props.ArticleStore;
-        console.log(articleDetail, articleDetail.a_desc, 'articleDetail')
+        const {toolDetail} = this.props.ToolStore;
+        console.log(toolDetail, toolDetail.name, 'articleDetail')
 		
-        return  <div className={styles.page_create_article}>
+        return  <div className={styles.page_create_tool}>
                     <Form onSubmit={this.handleSubmit.bind(this)}>
                         <FormItem
                             {...formItemLayout}
                             label="Title"
                         >
-						{this.getField("a_title", "Please input your Title!", true, articleDetail.a_title ? articleDetail.a_title: '')}
+						{this.getField("name", "Please input your Title!", true, toolDetail.name ? toolDetail.name: '')}
                         </FormItem>
                         <FormItem
                             {...formItemLayout}
                             label="Desc"
                         >
-						{this.getField("a_desc", "Please input your Desc!", true, articleDetail.a_desc ? articleDetail.a_desc: '', "textarea")}
+						{this.getField("t_desc", "Please input your Desc!", true, toolDetail.t_desc ? toolDetail.t_desc: '', "textarea")}
                         </FormItem>
-                        <FormItem
-                            {...formItemLayout}
-                            label="Url"
-                        >
-						{this.getField("a_url", "Please input your Url!", true, articleDetail.a_url ? articleDetail.a_url: '')}
-                        </FormItem>
+                       
                         <FormItem
                             {...formItemLayout}
                             label="Path"
                         >
-						{this.getField("a_path", "Please input your Path!", true, articleDetail.a_path ? articleDetail.a_path: "/pages/article_detail/article_detail")}
+						{this.getField("t_url", "Please input your Path!", true, toolDetail.t_url ? toolDetail.t_url: "/pages/eat/eat")}
 						</FormItem>
 						
 						<FormItem
                             {...formItemLayout}
                             label="Icon"
                         >
-						{this.getField("a_icon", "Please input your Icon!", true, articleDetail.a_icon ? articleDetail.a_icon: "https://geyulong.tech/images/mp/article/article4.png")}
+						{this.getField("t_icon", "Please input your Icon!", true, toolDetail.t_icon ? toolDetail.t_icon: "https://geyulong.tech/images/mp/article/article4.png")}
                         </FormItem>
 
                         <FormItem {...tailFormItemLayout}>
@@ -120,13 +115,13 @@ class CreateArticle extends Component {
 	handleSubmit(e) {
 		e.preventDefault();
 		const _this = this;
-		console.log(this.props.ArticleStore, 'handleSubmit')
+		console.log(this.props.ToolStore, 'handleSubmit')
 		this.props.form.validateFields((err, values) => {
 			let data = {...values};
 			if (!err) {
 				console.log('Received values of form: ', data);
-				_this.props.ArticleStore.addArticle(data).then(() => {
-					location.href="/admin/article";
+				_this.props.ToolStore.addToolData(data).then(() => {
+					location.href="/admin/tool";
 				});
 			} else {
 				throw err;
@@ -138,4 +133,4 @@ class CreateArticle extends Component {
 }
 
 
-export default Form.create()(CreateArticle);
+export default Form.create()(CreateTool);
