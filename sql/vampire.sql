@@ -126,3 +126,4 @@ insert into server_nav (name, path, icon, nav_id, parent_id) values
 update server_nav set name="文章列表", icon="https://geyulong.tech/admin/upload/images/blog.svg" where id=2;
 update server_nav set  icon="https://geyulong.tech/admin/upload/images/nav.svg" where id=3;
 update server_nav set  icon="https://geyulong.tech/admin/upload/images/tool.svg" where id=4;
+

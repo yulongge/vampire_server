@@ -2,6 +2,7 @@ import { observable, action, runInAction, configure } from 'mobx';
 import { getArticle, addArticle, getArticleDetail, deleteArticle, getToken } from '../app_request';
 import React from 'react';
 import {Divider} from 'antd';
+import { updateLocale } from 'moment';
 
 class Store {
 	constructor() {

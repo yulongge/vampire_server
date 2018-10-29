@@ -37,8 +37,8 @@ module.exports = (app, prefix, connection)=>{
 		let errcode = 0,
 			errmsg = "success",
 			result = {};
-		const { a_title, a_desc, a_url,a_path, a_icon } = req.body;
-		query(ADDARTICLE(a_title, a_desc, a_url,a_path, a_icon), (err, vals, fields) => {
+		const { a_title, a_desc, a_url,a_path, a_icon, id } = req.body;
+		query(ADDARTICLE(a_title, a_desc, a_url,a_path, a_icon, id), (err, vals, fields) => {
 			if(err) {
 				errcode = err.code,
 				errmsg = err.message,

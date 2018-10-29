@@ -30,8 +30,8 @@ module.exports = (app, prefix, connection)=>{
 		let errcode = 0,
 			errmsg = "success",
 			result = {};
-		const { name, t_desc, t_url, t_icon } = req.body;
-		query(ADDTOOL(name, t_desc, t_url, t_icon), (err, vals, fields) => {
+		const { name, t_desc, t_url, t_icon, id } = req.body;
+		query(ADDTOOL(name, t_desc, t_url, t_icon, id), (err, vals, fields) => {
 			if(err) {
 				errcode = err.code,
 				errmsg = err.message,

@@ -1,8 +1,11 @@
 const TOOL_LIST = "select * from mp_tool order by id desc";
 
 
-const ADDTOOL = (name, t_desc, t_url, t_icon) => {
+const ADDTOOL = (name, t_desc, t_url, t_icon, id) => {
 	let addSql = `insert into mp_tool(name, t_desc, t_url, t_icon) values (${"'" + name + "'"},${"'" + t_desc + "'"},${"'" + t_url + "'"},${"'" + t_icon + "'"})`;
+	if(id != "") {
+		addSql = `update mp_tool set name="${name}", t_desc="${t_desc}", t_url="${t_url}", t_icon="${t_icon}" where id=${id}`;
+	}
 	console.log(addSql, 'addSql');
 	return addSql;
 };
