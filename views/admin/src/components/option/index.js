@@ -44,7 +44,10 @@ export default class Option extends Component {
                 break;
             default: 
                 url = "/admin/create_article"
-        }
+		}
+		this.setState({
+            isSwitch: !this.state.isSwitch
+        })
         this.props.history.push(url)
     }
 
