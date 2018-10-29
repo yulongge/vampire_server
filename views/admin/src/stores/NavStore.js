@@ -23,7 +23,15 @@ class Store {
 			title: '图标',
 			dataIndex: 'icon',
 			key: 'icon'
-        },
+		},
+		{
+			title: '预览',
+			dataIndex: 'icon',
+			key: 'img',
+			render: (text, record) => (
+					<img src={record.icon} style={{width: "30px"}}/>				
+			)
+		},
 		{
 			title: 'Action',
 			key: 'action',

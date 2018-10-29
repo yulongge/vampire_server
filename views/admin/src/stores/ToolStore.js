@@ -24,7 +24,15 @@ class Store {
 			title: '图标',
 			dataIndex: 't_icon',
 			key: 't_icon'
-        },
+		},
+		{
+			title: '预览',
+			dataIndex: 't_icon',
+			key: 't_img',
+			render: (text, record) => (
+				<img src={record.t_icon} style={{width: "80px"}}/>
+			)
+		},
         {
 			title: '页面地址',
 			dataIndex: 't_url',

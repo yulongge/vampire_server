@@ -29,3 +29,6 @@ export const addTool = (data)=>requestUtil.POST(`/tool/create`, {...data});
 
 //删除工具详情
 export const deleteTool = (data)=>requestUtil.POST(`/tool/delete/${data.id}`, {...data});
+
+//获取token
+export const getToken = (data) => requestUtil.POST(`https://api.weixin.qq.com/cgi-bin/token`, {...data});

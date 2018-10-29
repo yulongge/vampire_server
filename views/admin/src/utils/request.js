@@ -47,7 +47,11 @@ function checkStatus({ resp, json}) {
 }
 
 function FETCH(url, options) {
-	url = `${domain}${url}`;
+	if(url.indexOf("http") >=0) {
+		url = url;
+	} else {
+		url = `${domain}${url}`;
+	}
 	const headers = {
 		'Accept': 'application/json',
 		"Content-Type": "application/json"
@@ -57,6 +61,7 @@ function FETCH(url, options) {
 		fetch(url, {
 			headers: headers,
 			credentials: 'include',
+			//mode: 'no-cors',
 			...options
 		})
 		.then(resp => {
