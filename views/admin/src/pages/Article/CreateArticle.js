@@ -51,7 +51,12 @@ class CreateArticle extends Component {
         console.log(articleDetail, articleDetail.a_desc, 'articleDetail')
 		
         return  <div className={styles.page_create_article}>
-                    <Form onSubmit={this.handleSubmit.bind(this)}>
+					<Form onSubmit={this.handleSubmit.bind(this)}>
+						<FormItem
+                            {...formItemLayout}
+                        >
+						{this.getField("id", "", false, articleDetail.id ? articleDetail.id: '', "hidden")}
+                        </FormItem>
                         <FormItem
                             {...formItemLayout}
                             label="Title"
@@ -103,7 +108,17 @@ class CreateArticle extends Component {
                 })(
                     <TextArea rows={4}  placeholder={tip}/>
                 )
-                break;
+				break;
+			case "hidden" :
+				return getFieldDecorator(title, {
+                    rules: [{
+                        required: isRequired, message: tip,	
+                    }],
+                    initialValue: defaultValue
+                })(
+                    <Input placeholder={tip} type="hidden"/>
+				)
+				break;
             default:
                 return getFieldDecorator(title, {
                     rules: [{

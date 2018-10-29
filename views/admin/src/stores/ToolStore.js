@@ -72,7 +72,7 @@ class Store {
 
 	@action deleteToolDetail(data) {
 		console.log(data, 'store')
-		return deleteArticle(data)
+		return deleteTool(data)
 	}
 
 

@@ -1,7 +1,11 @@
 const ARTICLE_LIST = "select * from mp_article order by id desc";
 
-const ADDARTICLE = (a_title, a_desc, a_url,a_path, a_icon) => {
+const ADDARTICLE = (a_title, a_desc, a_url, a_path, a_icon, id) => {
 	let addSql = `insert into mp_article(a_title, a_desc, a_url, a_path, a_icon) values (${"'" + a_title + "'"},${"'" + a_desc + "'"},${"'" + a_url + "'"},${"'" + a_path + "'"},${"'" + a_icon + "'"})`;
+
+	if(id.length) {
+		addSql = `update mp_article set a_title="${a_title}", a_desc="${a_desc}", a_url="${a_url}", a_path="${a_path}", a_icon="${a_icon}" where id=${id}`;
+	}
 	console.log(addSql, 'addSql');
 	return addSql;
 };
