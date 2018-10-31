@@ -26,12 +26,17 @@ create table if not exists user (
 	email varchar(20),
 	role INT(10),
 	login_time DATE,
+	password varchar(20),
 	primary key (id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 插入user数据
 insert into user (user_name, pic, sex, age, openId, iphone, email, role, login_time)
 	values ('GYL', '', '男', 30, '234353453454', '17701389735', 'gaiyulong@gmail.com', 1, '2018-07-27');
+
+alter table user add password varchar(100) not NULL;
+
+update user set  password="h" where id=1;
 
 -- 文章数据 article
 

@@ -1,5 +1,5 @@
 import { observable, action, runInAction, configure } from 'mobx';
-import { getAdminUser } from '../app_request';
+import { getAdminUser, toLogin } from '../app_request';
 
 class Store {
 	constructor() {
@@ -45,6 +45,10 @@ class Store {
 				this.userData = dataSource;
 			})
 		})
+	}
+
+	@action toLoginAction(data) {
+		return toLogin(data)
 	}
 }
 
