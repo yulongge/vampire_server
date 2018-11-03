@@ -53,6 +53,11 @@ class Login extends Component {
 
 		this.props.UserStore.toLoginAction({username: username.value, password: password.value}).then((res) => {
 			console.log(res, 'rest')
+			if(res.length) {
+				location.href = "/admin"
+				return;
+			}
+			message.info('username or password is error!');
 			//location.href = "/admin"
 		})
 

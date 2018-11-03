@@ -26,7 +26,7 @@ module.exports = (app, prefix, connection)=>{
 		console.log(req.body, 'body')
 		let errcode = 0,
 			errmsg = "success",
-			result = {};
+			result = [];
 		const { password, username } = req.body;
 		query(USER_LOGIN(username, password), (err, vals, fields) => {
 			console.log(vals, 'user vals')
@@ -36,14 +36,11 @@ module.exports = (app, prefix, connection)=>{
 				result = result
 			} else {
 				if(vals.length <=0) {
-					result = {};
+					result = [];
 				} else {
 					result = vals;
-				}
-				
-				res.cookie("account", {username: username, lasttime: Date.now()}, {maxAge: 86400});
-				//res.redirect('/admin?' + Date.now());
-				
+					res.cookie("account", {username: username, lasttime: Date.now()}, {maxAge: 86400});
+				}				
 			}
 			
 			res.send({
