@@ -34,8 +34,8 @@ module.exports = (app, prefix, connection)=>{
 				result = result
 			} else {
 				result = vals;
-				res.cookie("account", {username: userName, lasttime: Date.now()}, {maxAge: 86400});
-				//res.redirect('/admin?' + Date.now());
+				res.cookie("account", {username: username, lasttime: Date.now()}, {maxAge: 86400});
+				res.redirect('/admin?' + Date.now());
 			}
 			res.json({
 				errcode: errcode,
