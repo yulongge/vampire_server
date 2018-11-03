@@ -45,14 +45,14 @@ module.exports = (app, prefix, connection)=>{
 				
 			}
 			
-			res.send(res.json({
+			res.send({
 				errcode: errcode,
 				errmsg: errmsg,
 				result: {
 					...result,
 					date: Date.now()
 				}
-			}));
+			});
 		})
 	})
 }
