@@ -33,7 +33,12 @@ module.exports = (app, prefix, connection)=>{
 				errmsg = err.message,
 				result = result
 			} else {
-				result = vals;
+				if(vals.length <=0) {
+					result = [];
+				} else {
+					result = vals;
+				}
+				
 				res.cookie("account", {username: username, lasttime: Date.now()}, {maxAge: 86400});
 				//res.redirect('/admin?' + Date.now());
 				

@@ -51,7 +51,8 @@ class Login extends Component {
 			return;
 		}
 
-		this.props.UserStore.toLoginAction({username: username.value, password: password.value}).then(() => {
+		this.props.UserStore.toLoginAction({username: username.value, password: password.value}).then((res) => {
+			console.log(res, 'rest')
 			//location.href = "/admin"
 		})
 
