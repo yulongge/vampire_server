@@ -23,6 +23,7 @@ module.exports = (app, prefix, connection)=>{
 	})
 
 	app.post(`${prefix}/admin/login`, function(req, res) {
+		console.log(req.body, 'body')
 		let errcode = 0,
 			errmsg = "success",
 			result = {};

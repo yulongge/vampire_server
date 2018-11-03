@@ -59,11 +59,17 @@ function FETCH(url, options) {
 		"Content-Type": "application/json"
 	};
 
+	console.log(options, 'options', {
+		headers: headers,
+		credentials: 'include',
+		//mode: 'no-cors',
+		...options
+	})
 	return (
 		fetch(url, {
 			headers: headers,
 			credentials: 'include',
-			mode: 'no-cors',
+			//mode: 'no-cors',
 			...options
 		})
 		.then(resp => {
