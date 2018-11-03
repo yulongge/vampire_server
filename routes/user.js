@@ -28,13 +28,14 @@ module.exports = (app, prefix, connection)=>{
 			result = {};
 		const { password, username } = req.body;
 		query(USER_LOGIN(username, password), (err, vals, fields) => {
+			console.log(vals, 'user vals')
 			if(err) {
 				errcode = err.code,
 				errmsg = err.message,
 				result = result
 			} else {
 				if(vals.length <=0) {
-					result = [];
+					result = {};
 				} else {
 					result = vals;
 				}
@@ -47,7 +48,10 @@ module.exports = (app, prefix, connection)=>{
 			res.send(res.json({
 				errcode: errcode,
 				errmsg: errmsg,
-				result: result
+				result: {
+					...result,
+					date: Date.now()
+				}
 			}));
 		})
 	})
