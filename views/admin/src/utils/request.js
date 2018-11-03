@@ -13,6 +13,8 @@ function encodeQuery(url, data = {}) {
 
 function checkStatus({ resp, json}) {
 
+	console.log(resp, json, 'checkStatus')
+
 	if(resp.errcode == 0) {
 		//console.log('sucess');
 	}
@@ -65,6 +67,7 @@ function FETCH(url, options) {
 			...options
 		})
 		.then(resp => {
+			console.log(resp, 'resp')
 			return resp.json()
 				.then(json => ({ resp, json}))
 				.catch(error => ({ resp, json: {}, error}));
