@@ -2,7 +2,7 @@ const USER_LIST = "select user_name, sex, role, pic, openId, login_time, iphone,
 
 const USER_LOGIN = (username, password) => {
 	let sql = `select * from user where user_name = '${username}' and password = '${password}'`;
-
+	console.log(sql, 'user sql')
 	return sql;
 }
 
