@@ -52,7 +52,7 @@ class Login extends Component {
 		}
 
 		this.props.UserStore.toLoginAction({username: username.value, password: password.value}).then(() => {
-			location.href = "/admin"
+			//location.href = "/admin"
 		})
 
 		

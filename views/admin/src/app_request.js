@@ -1,7 +1,7 @@
 import requestUtil from './utils/request';
 
 //登陆
-export const toLogin = (data) => requestUtil.POST(`admin/login`, {...data});
+export const toLogin = (data) => requestUtil.POST(`/admin/login`, {...data});
 
 //获取后台导航数据
 export const getAdminNav = ()=>requestUtil.GET(`/admin/nav`);

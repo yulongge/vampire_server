@@ -1,7 +1,7 @@
-const USER_LIST = "select * from user";
+const USER_LIST = "select user_name, sex, role, pic, openId, login_time, iphone, id, email, age from user";
 
 const USER_LOGIN = (username, password) => {
-	let sql = `select * from user where username = '${username}' and password = '${password}'`;
+	let sql = `select * from user where user_name = '${username}' and password = '${password}'`;
 
 	return sql;
 }
