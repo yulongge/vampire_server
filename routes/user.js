@@ -35,7 +35,8 @@ module.exports = (app, prefix, connection)=>{
 			} else {
 				result = vals;
 				res.cookie("account", {username: username, lasttime: Date.now()}, {maxAge: 86400});
-				res.redirect('/admin?' + Date.now());
+				//res.redirect('/admin?' + Date.now());
+				res.send('欢迎新用户登录');
 			}
 			res.json({
 				errcode: errcode,

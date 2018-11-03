@@ -63,7 +63,7 @@ function FETCH(url, options) {
 		fetch(url, {
 			headers: headers,
 			credentials: 'include',
-			//mode: 'no-cors',
+			mode: 'no-cors',
 			...options
 		})
 		.then(resp => {
