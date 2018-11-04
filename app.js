@@ -28,6 +28,8 @@ app.all('/vampire_server/*', function(req, res, next) {
 		res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");  
 		res.header("Content-Type", "application/json;charset=utf-8");
 	}
+
+	console.log(req, res, 'vampire_server req')
       
 	if (req.method == 'OPTIONS') {
 		res.send(200);
