@@ -34,11 +34,13 @@ app.all('/vampire_server/*', function(req, res, next) {
 	if (req.method == 'OPTIONS') {
 		res.send(200);
 	} else {
-		if(req.cookies && req.cookies["account"] != null){
-			next();
-		} else {
-			res.redirect('/admin/login?' + Date.now());
-		}
+		// if(req.cookies && req.cookies["account"] != null){
+		// 	next();
+		// } else {
+		// 	res.redirect('/admin/login?' + Date.now());
+		// }
+
+		next();
 		
 	}
     
