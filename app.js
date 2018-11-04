@@ -29,12 +29,12 @@ app.all('/vampire_server/*', function(req, res, next) {
 		res.header("Content-Type", "application/json;charset=utf-8");
 	}
 
-	//console.log(req, res, 'vampire_server req')
+	console.log(req, req.cookies && req.cookies["account"], 'vampire_server req')
       
 	if (req.method == 'OPTIONS') {
 		res.send(200);
 	} else {
-		if(req.cookies["account"] != null){
+		if(req.cookies && req.cookies["account"] != null){
 			next();
 		} else {
 			res.redirect('/admin/login?' + Date.now());
