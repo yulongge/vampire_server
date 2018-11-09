@@ -1,5 +1,8 @@
 import requestUtil from './utils/request';
 
+//登陆
+export const toLogin = (data) => requestUtil.POST(`/admin/login`, {...data});
+
 //获取后台导航数据
 export const getAdminNav = ()=>requestUtil.GET(`/admin/nav`);
 
@@ -29,3 +32,6 @@ export const addTool = (data)=>requestUtil.POST(`/tool/create`, {...data});
 
 //删除工具详情
 export const deleteTool = (data)=>requestUtil.POST(`/tool/delete/${data.id}`, {...data});
+
+//获取token
+export const getToken = (data) => requestUtil.POST(`https://api.weixin.qq.com/cgi-bin/token`, {...data});

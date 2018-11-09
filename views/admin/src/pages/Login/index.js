@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
+import { message } from 'antd';
 import styles from './style.less';
+import { observer, inject } from 'mobx-react';
 
+@inject("UserStore")
+@observer
 class Login extends Component {
 	componentDidMount() {
 		
@@ -41,8 +45,21 @@ class Login extends Component {
 
 	toLogin() {
 		const {username, password} = this.refs;
-		console.log(username.value, password.value, 'toLogin')
-		location.href = "/admin"
+		console.log(username.value, password.value, 'toLogin');
+		if(username.value == "" || password.value == "") {
+			message.info('username or password is empty!');
+			return;
+		}
+
+		this.props.UserStore.toLoginAction({username: username.value, password: password.value}).then((res) => {
+			if(res.result.length) {
+				location.href = "/admin"
+				return;
+			}
+			message.info('username or password is error!');
+		})
+
+		
 	}
 }
 

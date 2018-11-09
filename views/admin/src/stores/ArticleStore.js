@@ -1,5 +1,5 @@
 import { observable, action, runInAction, configure } from 'mobx';
-import { getArticle, addArticle, getArticleDetail, deleteArticle } from '../app_request';
+import { getArticle, addArticle, getArticleDetail, deleteArticle, getToken } from '../app_request';
 import React from 'react';
 import {Divider} from 'antd';
 import { updateLocale } from 'moment';
@@ -14,12 +14,14 @@ class Store {
 		{
 			title: '标题',
 			dataIndex: 'a_title',
-			key: 'a_title'
+			key: 'a_title',
+			width: 150
 		},
 		{
 			title: '描述',
 			dataIndex: 'a_desc',
-			key: 'a_desc'
+			key: 'a_desc',
+			width: 200
 		},
 		{
 			title: '文章地址',
@@ -32,9 +34,18 @@ class Store {
 			key: 'a_icon'
 		},
 		{
+			title: '预览',
+			dataIndex: 'a_icon',
+			key: 'a_img',
+			render: (text, record) => (
+				<img src={record.a_icon} style={{width: "200px", height: "100px"}}/>
+			)
+		},
+		{
 			title: '路径',
 			dataIndex: 'a_path',
-			key: 'a_path'
+			key: 'a_path',
+			width: 150
 		},
 		{
 			title: 'Action',
@@ -45,6 +56,9 @@ class Store {
 					<a href="javascript:;" onClick={context.editArticle.bind(context, record.id)}>Edit</a>
 					<Divider type="vertical" />
 					<a href="javascript:;" onClick={context.deleteArticle.bind(context, record.id)}>Delete</a>
+					<Divider type="vertical" />
+					<a href="javascript:;" onClick={context.downloadQcord.bind(context, record.id)}>DownloadQcord</a>
+
 				</span>
 			)
 		}
@@ -70,6 +84,10 @@ class Store {
 	}
 
 	@action getArticleDetailData(data) {
+		if(!data) {
+			this.articleDetail = {};
+			return;
+		}
 		getArticleDetail(data).then(rst => {
 			runInAction(() => {
 				this.articleDetail = rst.result[0];
@@ -80,6 +98,11 @@ class Store {
 	@action deleteArticleData(data) {
 		console.log(data, 'store')
 		return deleteArticle(data)
+	}
+
+	@action getTokenData(data) {
+		console.log(data, 'getTokenData')
+		return getToken(data);
 	}
 }
 

@@ -44,7 +44,25 @@ class CreateArticle extends Component {
 			let param = searchStr.split("=");
 			this.props.ArticleStore.getArticleDetailData({id:param[1]});
 		}
-	}
+    }
+    
+    componentWillReceiveProps(nextProps) {
+        const {search} = nextProps.location;
+        const search1 = this.props.location.search;
+        console.log(search, search1, search == search, 'search')
+        if(search == search1) return;
+        console.log(nextProps, 'nextProps')
+
+
+		if(search.length) {
+			let searchStr = search.substring(1, search.length);
+            let param = searchStr.split("=");
+            console.log(param, 'param')
+			this.props.ArticleStore.getArticleDetailData({id:param[1]});
+		} else {
+            this.props.ArticleStore.getArticleDetailData();
+        }
+    }
 
     render() {
         const {articleDetail} = this.props.ArticleStore;

@@ -13,6 +13,8 @@ function encodeQuery(url, data = {}) {
 
 function checkStatus({ resp, json}) {
 
+	console.log(resp, json, 'checkStatus')
+
 	if(resp.errcode == 0) {
 		//console.log('sucess');
 	}
@@ -47,19 +49,31 @@ function checkStatus({ resp, json}) {
 }
 
 function FETCH(url, options) {
-	url = `${domain}${url}`;
+	if(url.indexOf("http") >=0) {
+		url = url;
+	} else {
+		url = `${domain}${url}`;
+	}
 	const headers = {
 		'Accept': 'application/json',
 		"Content-Type": "application/json"
 	};
 
+	console.log(options, 'options', {
+		headers: headers,
+		credentials: 'include',
+		//mode: 'no-cors',
+		...options
+	})
 	return (
 		fetch(url, {
 			headers: headers,
 			credentials: 'include',
+			//mode: 'no-cors',
 			...options
 		})
 		.then(resp => {
+			console.log(resp, 'resp')
 			return resp.json()
 				.then(json => ({ resp, json}))
 				.catch(error => ({ resp, json: {}, error}));

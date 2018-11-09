@@ -35,4 +35,16 @@ export default class ArticleList extends Component {
 			this.props.ArticleStore.getArticleData();
 		})
 	}
+
+	downloadQcord(id) {
+		console.log(id, 'id');
+		const params = {
+			grant_type: "client_credential",
+			appid: "wxbd972aeb302cee02",
+			secret: "d2ca3cb63f409153bcf0f98556e57a71"
+		}
+		this.props.ArticleStore.getTokenData(params).then(res => {
+			console.log(res, 'getToken')
+		})
+	}
 }
