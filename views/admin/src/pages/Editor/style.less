@@ -28,11 +28,19 @@
             }
         }
         .editorElem {
-			flex: 1;
+			//flex: 1;
+			width: 300px;
 			border: 1px solid #999;
 			border-radius: 10px;
 			.toolbar {
 				border-bottom: 1px solid #999;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+				//align-content: flex-start;
+				.w-e-menu {
+					flex: 1;
+				}
+
 			}
             .w-e-text-container {
                 height: 80vh;
